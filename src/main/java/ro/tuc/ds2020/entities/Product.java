@@ -15,7 +15,7 @@ public class Product {
     @ManyToMany(mappedBy = "products")
     private List<Cart> cartList = new ArrayList<>();
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "specsId")
     private Specs specs;
 
@@ -36,6 +36,17 @@ public class Product {
 
     @ManyToMany(mappedBy = "products")
     private List<FavoriteProducts> favoriteProductsList = new ArrayList<>();
+
+    public Product() {}
+
+    public Product(Long productId, Specs specs, String name, Float price, String description, Integer stock) {
+        this.productId = productId;
+        this.specs = specs;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.stock = stock;
+    }
 
     public Long getProductId() {
         return productId;

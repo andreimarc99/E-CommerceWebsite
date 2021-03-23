@@ -26,6 +26,21 @@ public class Specs {
     @Column(name = "size", nullable = false)
     private String size;
 
+    public Specs() {}
+
+    public Specs(Long specsId, Float weight, String size) {
+        this.specsId = specsId;
+        this.weight = weight;
+        this.size = size;
+    }
+
+    public Specs(Long specsId, List<Category> categories, Float weight, String size) {
+        this.specsId = specsId;
+        this.categories = categories;
+        this.weight = weight;
+        this.size = size;
+    }
+
     public Long getSpecsId() {
         return specsId;
     }

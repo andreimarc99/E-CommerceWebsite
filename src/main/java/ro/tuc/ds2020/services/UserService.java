@@ -53,9 +53,6 @@ public class UserService {
             throw new ResourceNotFoundException("User " + userDTO.getUsername() + " not found.");
         }
         User updatedUser = UserBuilder.toUser(userDTO);
-        System.out.println("-----------");
-        System.out.println(updatedUser.toString());
-        System.out.println("-----------");
         userRepository.save(updatedUser);
         return UserBuilder.toUserDTO(updatedUser);
     }

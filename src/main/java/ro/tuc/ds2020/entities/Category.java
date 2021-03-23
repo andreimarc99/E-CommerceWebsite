@@ -18,6 +18,13 @@ public class Category {
     @ManyToMany(mappedBy = "categories")
     private List<Specs> specsList = new ArrayList<>();
 
+    public Category() {}
+
+    public Category(Long categoryId, String name) {
+        this.categoryId = categoryId;
+        this.name = name;
+    }
+
     public Long getCategoryId() {
         return categoryId;
     }
