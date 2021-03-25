@@ -36,7 +36,7 @@ public class CustomerController {
             insertedCustomerId = customerService.insertCustomer(customerToBeInsertedDTO);
             return new ResponseEntity<>(insertedCustomerId, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 

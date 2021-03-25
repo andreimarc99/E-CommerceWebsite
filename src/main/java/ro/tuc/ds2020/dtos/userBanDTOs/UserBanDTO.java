@@ -1,32 +1,19 @@
-package ro.tuc.ds2020.entities;
+package ro.tuc.ds2020.dtos.userBanDTOs;
 
-import javax.persistence.*;
+import ro.tuc.ds2020.dtos.userDTOs.UserDTO;
+
 import java.util.Date;
 
-@Entity
-@Table(name="user_ban")
-public class UserBan {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "banId", nullable = false)
+public class UserBanDTO {
     private Long banId;
-
-    @Column(name = "reason", nullable = false)
     private String reason;
-
-    @Column(name = "start_date", nullable = false)
     private Date startDate;
-
-    @Column(name = "end_date", nullable = false)
     private Date endDate;
+    private UserDTO user;
 
-    @ManyToOne()
-    @JoinColumn(name = "username")
-    private User user;
+    public UserBanDTO() {}
 
-    public UserBan() {}
-
-    public UserBan(Long banId, String reason, Date startDate, Date endDate, User user) {
+    public UserBanDTO(Long banId, String reason, Date startDate, Date endDate, UserDTO user) {
         this.banId = banId;
         this.reason = reason;
         this.startDate = startDate;
@@ -66,11 +53,11 @@ public class UserBan {
         this.endDate = endDate;
     }
 
-    public User getUser() {
+    public UserDTO getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserDTO user) {
         this.user = user;
     }
 }

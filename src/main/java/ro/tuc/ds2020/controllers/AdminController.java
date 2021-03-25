@@ -35,7 +35,7 @@ public class AdminController {
             insertedAdminId = adminService.insertAdmin(adminToBeInsertedDTO);
             return new ResponseEntity<>(insertedAdminId, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 

@@ -34,7 +34,7 @@ public class ProductController {
             insertedProductId = productService.insertProduct(productDTO);
             return new ResponseEntity<>(insertedProductId, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 

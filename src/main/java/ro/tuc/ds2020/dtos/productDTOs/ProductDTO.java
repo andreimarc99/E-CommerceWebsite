@@ -1,10 +1,10 @@
 package ro.tuc.ds2020.dtos.productDTOs;
 
-import ro.tuc.ds2020.entities.Specs;
+import ro.tuc.ds2020.dtos.specsDTOs.SpecsWithCategoriesDTO;
 
 public class ProductDTO {
     private Long productId;
-    private Specs specs;
+    private SpecsWithCategoriesDTO specs;
     private String name;
     private Float price;
     private String description;
@@ -12,7 +12,7 @@ public class ProductDTO {
 
     public ProductDTO() {}
 
-    public ProductDTO(Long productId, Specs specs, String name, Float price, String description, Integer stock) {
+    public ProductDTO(Long productId, SpecsWithCategoriesDTO specs, String name, Float price, String description, Integer stock) {
         this.productId = productId;
         this.specs = specs;
         this.name = name;
@@ -29,11 +29,11 @@ public class ProductDTO {
         this.productId = productId;
     }
 
-    public Specs getSpecs() {
+    public SpecsWithCategoriesDTO getSpecs() {
         return specs;
     }
 
-    public void setSpecs(Specs specs) {
+    public void setSpecs(SpecsWithCategoriesDTO specs) {
         this.specs = specs;
     }
 

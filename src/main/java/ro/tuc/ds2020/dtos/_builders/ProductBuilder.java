@@ -7,7 +7,7 @@ public class ProductBuilder {
 
     public static Product toProduct(ProductDTO productDTO) {
         return new Product(productDTO.getProductId(),
-                productDTO.getSpecs(),
+                SpecsBuilder.toSpecs(productDTO.getSpecs()),
                 productDTO.getName(),
                 productDTO.getPrice(),
                 productDTO.getDescription(),
@@ -16,7 +16,7 @@ public class ProductBuilder {
 
     public static ProductDTO toProductDTO(Product product) {
         return new ProductDTO(product.getProductId(),
-                product.getSpecs(),
+                SpecsBuilder.toSpecsWithCategoriesDTO(product.getSpecs()),
                 product.getName(),
                 product.getPrice(),
                 product.getDescription(),

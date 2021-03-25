@@ -2,7 +2,6 @@ package ro.tuc.ds2020.dtos._builders;
 
 import ro.tuc.ds2020.dtos.adminDTOs.AdminDTO;
 import ro.tuc.ds2020.dtos.adminDTOs.AdminToBeInsertedDTO;
-import ro.tuc.ds2020.dtos.userDTOs.UserDTO;
 import ro.tuc.ds2020.entities.Admin;
 import ro.tuc.ds2020.entities.User;
 

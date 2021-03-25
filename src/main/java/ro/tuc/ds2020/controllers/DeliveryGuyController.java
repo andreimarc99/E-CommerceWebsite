@@ -35,7 +35,7 @@ public class DeliveryGuyController {
             insertedDeliveryGuyId = deliveryGuyService.insertDeliveryGuy(deliveryGuyToBeInsertedDTO);
             return new ResponseEntity<>(insertedDeliveryGuyId, HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 

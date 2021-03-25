@@ -34,7 +34,7 @@ public class SpecsController {
             specsService.insertSpecs(specsWithCategoriesDTO);
             return new ResponseEntity<>(specsWithCategoriesDTO.getSpecsId(), HttpStatus.CREATED);
         } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
 
@@ -49,7 +49,7 @@ public class SpecsController {
     }
 
     @PutMapping()
-    public ResponseEntity<Long> updateSpecs(@RequestBody SpecsDTO specsDTO, @PathVariable Long specsId) {
+    public ResponseEntity<Long> updateSpecs(@RequestBody SpecsDTO specsDTO) {
         try {
             specsService.updateSpecs(specsDTO);
             return new ResponseEntity<>(specsDTO.getSpecsId(), HttpStatus.OK);

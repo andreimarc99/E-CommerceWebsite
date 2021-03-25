@@ -15,7 +15,7 @@ public class Product {
     @ManyToMany(mappedBy = "products")
     private List<Cart> cartList = new ArrayList<>();
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
     @JoinColumn(name = "specsId")
     private Specs specs;
 

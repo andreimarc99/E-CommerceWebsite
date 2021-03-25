@@ -7,12 +7,13 @@ import java.util.List;
 @Entity
 @Table(name="specs")
 public class Specs {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "specsId", nullable = false)
     private Long specsId;
 
-    @ManyToMany ()
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "specs_categories",
             joinColumns = @JoinColumn(name = "specsId"),
@@ -71,5 +72,9 @@ public class Specs {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    public String toString() {
+        return "ID: " + specsId + ", weight: " + weight + ", size: " + size;
     }
 }

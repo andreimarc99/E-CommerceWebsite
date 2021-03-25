@@ -52,4 +52,8 @@ public class SpecsWithCategoriesDTO {
     public void setSize(String size) {
         this.size = size;
     }
+
+    public String toString() {
+        return "ID: " + specsId + ", weight: " + weight + ", size: " + size;
+    }
 }

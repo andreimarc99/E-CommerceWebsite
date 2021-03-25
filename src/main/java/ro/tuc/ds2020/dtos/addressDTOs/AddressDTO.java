@@ -1,46 +1,27 @@
-package ro.tuc.ds2020.entities;
+package ro.tuc.ds2020.dtos.addressDTOs;
 
-import javax.persistence.*;
+import ro.tuc.ds2020.dtos.userDTOs.UserDTO;
 
-@Entity
-@Table(name="address")
-public class Address {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "addressId", nullable = false)
+public class AddressDTO {
+
     private Long addressId;
-
-    @Column(name = "alias", nullable = false)
     private String alias;
-
-    @Column(name = "country", nullable = false)
     private String country;
-
-    @Column(name = "county", nullable = false)
     private String county;
-
-    @Column(name = "town", nullable = false)
     private String town;
-
-    @Column(name = "streetNr", nullable = false)
     private String streetNr;
-
-    @Column(name = "countryCode", nullable = false)
     private String countryCode;
+    private UserDTO user;
 
-    @ManyToOne()
-    @JoinColumn(name = "username")
-    private User user;
+    public AddressDTO() {}
 
-    public Address() {}
-
-    public Address(Long addressId, String alias, String country, String county, String town, String streetNr, String countryCode, User user) {
+    public AddressDTO(Long addressId, String alias, String country, String county, String town, String streetNr, String countryCode, UserDTO user) {
         this.addressId = addressId;
         this.alias = alias;
         this.country = country;
         this.county = county;
-        this.town = town;
         this.streetNr = streetNr;
+        this.town = town;
         this.countryCode = countryCode;
         this.user = user;
     }
@@ -101,11 +82,12 @@ public class Address {
         this.streetNr = streetNr;
     }
 
-    public User getUser() {
+
+    public UserDTO getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserDTO user) {
         this.user = user;
     }
 }
