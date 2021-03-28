@@ -12,7 +12,7 @@ public class Cart {
     @Column(name = "cartId", nullable = false)
     private Long cartId;
 
-    @ManyToMany ()
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "cart_product",
             joinColumns = @JoinColumn(name = "cartId"),
@@ -26,6 +26,15 @@ public class Cart {
 
     @Column(name = "fullPrice", nullable = false)
     private Float fullPrice;
+
+    public Cart() {}
+
+    public Cart(Long cartId, List<Product> products, Customer customer, Float fullPrice) {
+        this.cartId = cartId;
+        this.products = products;
+        this.customer = customer;
+        this.fullPrice = fullPrice;
+    }
 
     public Long getCartId() {
         return cartId;

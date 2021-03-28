@@ -10,7 +10,7 @@ public class Complaint {
     @Column(name = "complaintId", nullable = false)
     private Long complaintId;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customerId")
     private Customer customer;
 
@@ -19,6 +19,15 @@ public class Complaint {
 
     @Column(name = "message", nullable = false)
     private String message;
+
+    public Complaint() {}
+
+    public Complaint(Long complaintId, Customer customer, String type, String message) {
+        this.complaintId = complaintId;
+        this.customer = customer;
+        this.type = type;
+        this.message = message;
+    }
 
     public Long getComplaintId() {
         return complaintId;

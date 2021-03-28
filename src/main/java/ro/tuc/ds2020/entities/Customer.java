@@ -1,5 +1,8 @@
 package ro.tuc.ds2020.entities;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,8 +32,7 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private List<Review> reviewList = new ArrayList<>();
 
-    @OneToMany()
-    @JoinColumn(name = "complaintId")
+    @OneToMany(mappedBy = "customer")
     private List<Complaint> complaintList = new ArrayList<>();
 
     @OneToMany(mappedBy = "customer")

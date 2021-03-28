@@ -10,11 +10,11 @@ public class UsedVoucher {
     @Column(name = "usedVoucherId", nullable = false)
     private Long usedVoucherId;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customerId")
     private Customer customer;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "voucherId")
     private Voucher voucher;
 

@@ -21,6 +21,15 @@ public class ComplaintResponse {
     @Column(name = "message", nullable = false)
     private String message;
 
+    public ComplaintResponse() {}
+
+    public ComplaintResponse(Long complaintResponseId, Complaint complaint, Admin admin, String message) {
+        this.complaintResponseId = complaintResponseId;
+        this.complaint = complaint;
+        this.admin = admin;
+        this.message = message;
+    }
+
     public Long getComplaintResponseId() {
         return complaintResponseId;
     }

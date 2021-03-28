@@ -2,6 +2,7 @@ package ro.tuc.ds2020.dtos._builders;
 
 import ro.tuc.ds2020.dtos.customerDTOs.CustomerDTO;
 import ro.tuc.ds2020.dtos.customerDTOs.CustomerToBeInsertedDTO;
+import ro.tuc.ds2020.dtos.productDTOs.ProductDTO;
 import ro.tuc.ds2020.entities.Customer;
 import ro.tuc.ds2020.entities.User;
 

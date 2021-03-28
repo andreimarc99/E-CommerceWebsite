@@ -10,11 +10,11 @@ public class Review {
     @Column(name = "reviewId", nullable = false)
     private Long reviewId;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "productId")
     private Product product;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customerId")
     private Customer customer;
 
@@ -23,6 +23,16 @@ public class Review {
 
     @Column(name = "message", nullable = false)
     private String message;
+
+    public Review() {}
+
+    public Review(Long reviewId, Product product, Customer customer, Integer rating, String message) {
+        this.reviewId = reviewId;
+        this.product = product;
+        this.customer = customer;
+        this.rating = rating;
+        this.message = message;
+    }
 
     public Long getReviewId() {
         return reviewId;

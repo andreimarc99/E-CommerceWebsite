@@ -12,17 +12,30 @@ public class FavoriteProducts {
     @Column(name = "favoriteProductsId", nullable = false)
     private Long favoriteProductsId;
 
-    @ManyToOne()
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customerId")
     private Customer customer;
 
-    @ManyToMany ()
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "favProducts_product",
             joinColumns = @JoinColumn(name = "favoriteProductsId"),
             inverseJoinColumns = @JoinColumn(name = "productId")
     )
     private List<Product> products = new ArrayList<>();
+
+    public FavoriteProducts() {}
+
+    public FavoriteProducts(Long favoriteProductsId, Customer customer) {
+        this.favoriteProductsId = favoriteProductsId;
+        this.customer = customer;
+    }
+
+    public FavoriteProducts(Long favoriteProductsId, Customer customer, List<Product> products) {
+        this.favoriteProductsId = favoriteProductsId;
+        this.customer = customer;
+        this.products = products;
+    }
 
     public Long getFavoriteProductsId() {
         return favoriteProductsId;
