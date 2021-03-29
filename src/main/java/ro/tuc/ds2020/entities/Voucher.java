@@ -25,6 +25,15 @@ public class Voucher {
     @OneToMany(mappedBy = "voucher")
     private List<UsedVoucher> usedVoucherList = new ArrayList<>();
 
+    public Voucher() {}
+
+    public Voucher(Long voucherId, Date startDate, Date endDate, boolean oneTimeOnly) {
+        this.voucherId = voucherId;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.oneTimeOnly = oneTimeOnly;
+    }
+
     public Long getVoucherId() {
         return voucherId;
     }

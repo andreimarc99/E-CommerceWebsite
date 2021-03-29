@@ -1,32 +1,16 @@
-package ro.tuc.ds2020.entities;
+package ro.tuc.ds2020.dtos.orderDTOs;
 
-import javax.persistence.*;
+import ro.tuc.ds2020.dtos.cartDTOs.CartDTO;
+import ro.tuc.ds2020.dtos.voucherDTOs.VoucherDTO;
 
-@Entity
-@Table(name="orders")
-public class Order {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "orderId", nullable = false)
+public class OrderDTO {
     private Long orderId;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cartId")
-    private Cart cart;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "voucherId")
-    private Voucher voucher;
-
-    @Column(name = "delivered", nullable = false)
+    private CartDTO cart;
+    private VoucherDTO voucher;
     private boolean delivered;
-
-    @Column(name = "finalPrice", nullable = false)
     private Float finalPrice;
 
-    public Order() {}
-
-    public Order(Long orderId, Cart cart, Voucher voucher, boolean delivered, Float finalPrice) {
+    public OrderDTO(Long orderId, CartDTO cart, VoucherDTO voucher, boolean delivered, Float finalPrice) {
         this.orderId = orderId;
         this.cart = cart;
         this.voucher = voucher;
@@ -42,19 +26,19 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public Cart getCart() {
+    public CartDTO getCart() {
         return cart;
     }
 
-    public void setCart(Cart cart) {
+    public void setCart(CartDTO cart) {
         this.cart = cart;
     }
 
-    public Voucher getVoucher() {
+    public VoucherDTO getVoucher() {
         return voucher;
     }
 
-    public void setVoucher(Voucher voucher) {
+    public void setVoucher(VoucherDTO voucher) {
         this.voucher = voucher;
     }
 
