@@ -34,6 +34,9 @@ public class Product {
     @Column(name = "stock", nullable = false)
     private Integer stock;
 
+    @Column(name = "numberSold", nullable = false)
+    private Integer numberSold;
+
     @OneToMany(mappedBy = "product")
     private List<Review> reviewList = new ArrayList<>();
 
@@ -42,13 +45,14 @@ public class Product {
 
     public Product() {}
 
-    public Product(Long productId, Specs specs, String name, Float price, String description, Integer stock) {
+    public Product(Long productId, Specs specs, String name, Float price, String description, Integer stock, Integer numberSold) {
         this.productId = productId;
         this.specs = specs;
         this.name = name;
         this.price = price;
         this.description = description;
         this.stock = stock;
+        this.numberSold = numberSold;
     }
 
     public Long getProductId() {
@@ -101,6 +105,14 @@ public class Product {
 
     public Integer getStock() {
         return stock;
+    }
+
+    public Integer getNumberSold() {
+        return numberSold;
+    }
+
+    public void setNumberSold(Integer numberSold) {
+        this.numberSold = numberSold;
     }
 
     public void setStock(Integer stock) {

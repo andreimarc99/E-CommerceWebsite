@@ -1,5 +1,6 @@
 package ro.tuc.ds2020.dtos.favoriteProductsDTOs;
 
+import ro.tuc.ds2020.dtos.customerDTOs.CustomerDTO;
 import ro.tuc.ds2020.dtos.productDTOs.ProductDTO;
 import ro.tuc.ds2020.entities.Customer;
 
@@ -9,10 +10,10 @@ import java.util.List;
 public class FavoriteProductsDTO {
 
     private Long favoriteProductsId;
-    private Customer customer;
+    private CustomerDTO customer;
     private List<ProductDTO> products = new ArrayList<>();
 
-    public FavoriteProductsDTO(Long favoriteProductsId, Customer customer, List<ProductDTO> products) {
+    public FavoriteProductsDTO(Long favoriteProductsId, CustomerDTO customer, List<ProductDTO> products) {
         this.favoriteProductsId = favoriteProductsId;
         this.customer = customer;
         this.products = products;
@@ -26,11 +27,11 @@ public class FavoriteProductsDTO {
         this.favoriteProductsId = favoriteProductsId;
     }
 
-    public Customer getCustomer() {
+    public CustomerDTO getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(CustomerDTO customer) {
         this.customer = customer;
     }
 

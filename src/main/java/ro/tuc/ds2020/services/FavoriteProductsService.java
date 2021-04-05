@@ -42,4 +42,14 @@ public class FavoriteProductsService {
         }
         favoriteProductsRepository.deleteById(favoriteProductsId);
     }
+
+    public FavoriteProductsDTO updateProduct(FavoriteProductsDTO productDTO) throws ResourceNotFoundException {
+        Optional<FavoriteProducts> products = favoriteProductsRepository.findById(productDTO.getFavoriteProductsId());
+        if (!products.isPresent()) {
+            throw new ResourceNotFoundException("FavoriteProducts with id " + productDTO.getFavoriteProductsId() + " not found.");
+        }
+        FavoriteProducts updatedProduct = FavoriteProductsBuilder.toFavoriteProducts(productDTO);
+        FavoriteProductsDTO updatedProductDTO = FavoriteProductsBuilder.toFavoriteProductsDTO(favoriteProductsRepository.save(updatedProduct));
+        return updatedProductDTO;
+    }
 }

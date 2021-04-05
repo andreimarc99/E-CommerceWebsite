@@ -18,6 +18,14 @@ public class UsedVoucher {
     @JoinColumn(name = "voucherId")
     private Voucher voucher;
 
+    public UsedVoucher() {}
+
+    public UsedVoucher(Long usedVoucherId, Customer customer, Voucher voucher) {
+        this.usedVoucherId = usedVoucherId;
+        this.customer = customer;
+        this.voucher = voucher;
+    }
+
     public Long getUsedVoucherId() {
         return usedVoucherId;
     }

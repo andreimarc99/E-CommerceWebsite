@@ -11,29 +11,29 @@ import java.util.stream.Collectors;
 public class FavoriteProductsBuilder {
     public static FavoriteProducts toFavoriteProducts(FavoriteProductsDTO favoriteProductsDTO) {
         return new FavoriteProducts(favoriteProductsDTO.getFavoriteProductsId(),
-                favoriteProductsDTO.getCustomer(),
+                CustomerBuilder.toCustomer(favoriteProductsDTO.getCustomer()),
                 favoriteProductsDTO.getProducts().stream().map(ProductBuilder::toProduct).collect(Collectors.toList()));
     }
 
     public static FavoriteProducts toFavoriteProducts(ShortFavoriteProductsDTO shortFavoriteProductsDTO) {
         return new FavoriteProducts(shortFavoriteProductsDTO.getFavoriteProductsId(),
-                shortFavoriteProductsDTO.getCustomer());
+                CustomerBuilder.toCustomer(shortFavoriteProductsDTO.getCustomer()));
     }
 
     public static FavoriteProducts toFavoriteProducts(ShortFavoriteProductsDTO shortFavoriteProductsDTO, List<Product> products) {
         return new FavoriteProducts(shortFavoriteProductsDTO.getFavoriteProductsId(),
-                shortFavoriteProductsDTO.getCustomer(),
+                CustomerBuilder.toCustomer(shortFavoriteProductsDTO.getCustomer()),
                 products);
     }
 
     public static FavoriteProductsDTO toFavoriteProductsDTO(FavoriteProducts favoriteProducts) {
         return new FavoriteProductsDTO(favoriteProducts.getFavoriteProductsId(),
-                favoriteProducts.getCustomer(),
+                CustomerBuilder.toCustomerDTO(favoriteProducts.getCustomer()),
                 favoriteProducts.getProducts().stream().map(ProductBuilder::toProductDTO).collect(Collectors.toList()));
     }
 
     public static ShortFavoriteProductsDTO toShortFavoriteProductsDTO(FavoriteProducts favoriteProducts) {
         return new ShortFavoriteProductsDTO(favoriteProducts.getFavoriteProductsId(),
-                favoriteProducts.getCustomer());
+                CustomerBuilder.toCustomerDTO(favoriteProducts.getCustomer()));
     }
 }

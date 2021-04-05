@@ -11,7 +11,8 @@ public class ProductBuilder {
                 productDTO.getName(),
                 productDTO.getPrice(),
                 productDTO.getDescription(),
-                productDTO.getStock());
+                productDTO.getStock(),
+                productDTO.getNumberSold());
     }
 
     public static ProductDTO toProductDTO(Product product) {
@@ -20,6 +21,7 @@ public class ProductBuilder {
                 product.getName(),
                 product.getPrice(),
                 product.getDescription(),
-                product.getStock());
+                product.getStock(),
+                product.getNumberSold());
     }
 }

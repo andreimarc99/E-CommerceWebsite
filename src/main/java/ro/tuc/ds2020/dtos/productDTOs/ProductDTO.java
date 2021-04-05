@@ -9,16 +9,19 @@ public class ProductDTO {
     private Float price;
     private String description;
     private Integer stock;
+    private Integer numberSold;
 
     public ProductDTO() {}
 
-    public ProductDTO(Long productId, SpecsWithCategoriesDTO specs, String name, Float price, String description, Integer stock) {
+    public ProductDTO(Long productId, SpecsWithCategoriesDTO specs, String name, Float price, String description, Integer stock,
+                      Integer numberSold) {
         this.productId = productId;
         this.specs = specs;
         this.name = name;
         this.price = price;
         this.description = description;
         this.stock = stock;
+        this.numberSold = numberSold;
     }
 
     public Long getProductId() {
@@ -67,5 +70,13 @@ public class ProductDTO {
 
     public void setStock(Integer stock) {
         this.stock = stock;
+    }
+
+    public Integer getNumberSold() {
+        return numberSold;
+    }
+
+    public void setNumberSold(Integer numberSold) {
+        this.numberSold = numberSold;
     }
 }

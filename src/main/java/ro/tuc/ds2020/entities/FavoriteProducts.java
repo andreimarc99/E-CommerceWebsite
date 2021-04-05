@@ -1,5 +1,8 @@
 package ro.tuc.ds2020.entities;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +20,7 @@ public class FavoriteProducts {
     private Customer customer;
 
     @ManyToMany(fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     @JoinTable(
             name = "favProducts_product",
             joinColumns = @JoinColumn(name = "favoriteProductsId"),

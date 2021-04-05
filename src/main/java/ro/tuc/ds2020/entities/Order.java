@@ -10,11 +10,11 @@ public class Order {
     @Column(name = "orderId", nullable = false)
     private Long orderId;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "cartId")
     private Cart cart;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "voucherId")
     private Voucher voucher;
 

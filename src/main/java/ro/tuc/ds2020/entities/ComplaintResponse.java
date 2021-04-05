@@ -10,7 +10,7 @@ public class ComplaintResponse {
     @Column(name = "complaintResponseId", nullable = false)
     private Long complaintResponseId;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "complaintId")
     private Complaint complaint;
 

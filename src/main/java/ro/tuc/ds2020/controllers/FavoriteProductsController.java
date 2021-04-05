@@ -49,4 +49,13 @@ public class FavoriteProductsController {
             return new ResponseEntity<>(favoriteProductsId, HttpStatus.NOT_FOUND);
         }
     }
+    @PutMapping()
+    public ResponseEntity<Long> updateProduct(@RequestBody FavoriteProductsDTO productDTO) {
+        try {
+            favoriteProductsService.updateProduct(productDTO);
+            return new ResponseEntity<>(productDTO.getFavoriteProductsId(), HttpStatus.OK);
+        } catch (ResourceNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
