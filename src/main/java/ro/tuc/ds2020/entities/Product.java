@@ -37,6 +37,10 @@ public class Product {
     @Column(name = "numberSold", nullable = false)
     private Integer numberSold;
 
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "image_id")
+    private Image image;
+
     @OneToMany(mappedBy = "product")
     private List<Review> reviewList = new ArrayList<>();
 
@@ -54,6 +58,18 @@ public class Product {
         this.stock = stock;
         this.numberSold = numberSold;
     }
+
+    public Product(Long productId, Specs specs, String name, Float price, String description, Integer stock, Integer numberSold, Image image) {
+        this.productId = productId;
+        this.specs = specs;
+        this.name = name;
+        this.price = price;
+        this.description = description;
+        this.stock = stock;
+        this.numberSold = numberSold;
+        this.image = image;
+    }
+
 
     public Long getProductId() {
         return productId;
@@ -133,5 +149,19 @@ public class Product {
 
     public void setFavoriteProductsList(List<FavoriteProducts> favoriteProductsList) {
         this.favoriteProductsList = favoriteProductsList;
+    }
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setImage(Image image) {
+        this.image = image;
+    }
+
+    public String toString() {
+        return "Specs: " + specs.toString() + ", stock: " + stock + ", numberSold: " + numberSold + ", img: ID: " + image.getImageId() + ", name: " + image.getName() + ", " +
+                image.getType() + ", " +image.getData();
+
     }
 }

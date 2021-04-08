@@ -48,4 +48,8 @@ public class Category {
     public void setSpecsList(List<Specs> specsList) {
         this.specsList = specsList;
     }
+
+    public String toString() {
+        return "categoryId: " + categoryId + ", name: " + name;
+    }
 }

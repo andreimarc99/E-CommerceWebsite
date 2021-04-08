@@ -75,6 +75,11 @@ public class Specs {
     }
 
     public String toString() {
-        return "ID: " + specsId + ", weight: " + weight + ", size: " + size;
+        String str = "ID: " + specsId + ", weight: " + weight + ", size: " + size;
+        String cat = "";
+        for (Category category : categories) {
+            cat += " " + category.toString();
+        }
+        return str + ", categories: " + cat;
     }
 }
