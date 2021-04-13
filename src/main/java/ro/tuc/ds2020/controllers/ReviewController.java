@@ -27,6 +27,12 @@ public class ReviewController {
         return new ResponseEntity<>(reviewDTOS, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{productId}")
+    public ResponseEntity<List<ReviewDTO>> getReviewsByProductId(@PathVariable Long productId) {
+        List<ReviewDTO> reviewDTOS = reviewService.getReviewsByProductId(productId);
+        return new ResponseEntity<>(reviewDTOS, HttpStatus.OK);
+    }
+
     @PostMapping()
     public ResponseEntity<Long> insertReview(@RequestBody ReviewDTO reviewDTO) {
         Long insertedReviewId;

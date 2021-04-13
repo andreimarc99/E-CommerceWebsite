@@ -31,6 +31,13 @@ public class ReviewService {
                 .collect(Collectors.toList());
     }
 
+    public List<ReviewDTO> getReviewsByProductId(Long productId) {
+        List<Review> reviews = reviewRepository.getReviewByProductId(productId);
+        return reviews.stream()
+                .map(ReviewBuilder::toReviewDTO)
+                .collect(Collectors.toList());
+    }
+
     public Long insertReview(ReviewDTO reviewDTO) {
         Review review = ReviewBuilder.toReview(reviewDTO);
         review = reviewRepository.save(review);
