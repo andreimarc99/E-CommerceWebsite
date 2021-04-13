@@ -49,6 +49,14 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
+    public ProductWithImageDTO getProductById(Long productId) {
+        Optional<Product> product = productRepository.findById(productId);
+        if (!product.isPresent()) {
+            throw new ResourceNotFoundException("Product with id " + productId + " not found.");
+        }
+        return ProductBuilder.toProductWithImageDTO(product.get());
+    }
+
     public Long insertProduct(ProductDTO productDTO) {
         Product product = ProductBuilder.toProduct(productDTO);
         product = productRepository.save(product);

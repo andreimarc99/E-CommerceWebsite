@@ -46,6 +46,12 @@ public class ProductController {
         return new ResponseEntity<>(productWithImageDTOS, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/get/{productId}")
+    public ResponseEntity<ProductWithImageDTO> getProductById(@PathVariable Long productId) {
+        ProductWithImageDTO productWithImageDTO = productService.getProductById(productId);
+        return new ResponseEntity<>(productWithImageDTO, HttpStatus.OK);
+    }
+
     @PostMapping()
     public ResponseEntity<Long> insertProduct(@RequestBody ProductDTO productDTO) {
         Long insertedProductId;
