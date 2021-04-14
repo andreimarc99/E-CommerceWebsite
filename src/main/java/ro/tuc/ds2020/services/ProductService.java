@@ -57,6 +57,13 @@ public class ProductService {
         return ProductBuilder.toProductWithImageDTO(product.get());
     }
 
+    public List<ProductWithImageDTO> getProductsByCategoryId(Long categoryId) {
+        List<Product> products = productRepository.getProductsByCategoryId(categoryId);
+        return products.stream()
+                .map(ProductBuilder::toProductWithImageDTO)
+                .collect(Collectors.toList());
+    }
+
     public Long insertProduct(ProductDTO productDTO) {
         Product product = ProductBuilder.toProduct(productDTO);
         product = productRepository.save(product);

@@ -46,6 +46,12 @@ public class ProductController {
         return new ResponseEntity<>(productWithImageDTOS, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/getByCategory/{categoryId}")
+    public ResponseEntity<List<ProductWithImageDTO>> getProductsByCategoryId(@PathVariable Long categoryId) {
+        List<ProductWithImageDTO> productWithImageDTOS = productService.getProductsByCategoryId(categoryId);
+        return new ResponseEntity<>(productWithImageDTOS, HttpStatus.OK);
+    }
+
     @GetMapping(value = "/get/{productId}")
     public ResponseEntity<ProductWithImageDTO> getProductById(@PathVariable Long productId) {
         ProductWithImageDTO productWithImageDTO = productService.getProductById(productId);

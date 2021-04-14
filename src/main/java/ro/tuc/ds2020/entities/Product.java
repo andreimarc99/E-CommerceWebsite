@@ -2,6 +2,7 @@ package ro.tuc.ds2020.entities;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class Product {
     @Column(name = "price", nullable = false)
     private Float price;
 
-    @Column(name = "description", nullable = false)
+    @Column(name = "description", nullable = false, length = 1024)
     private String description;
 
     @Column(name = "stock", nullable = false)
