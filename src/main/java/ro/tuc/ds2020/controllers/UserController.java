@@ -27,6 +27,17 @@ public class UserController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{username}")
+    public ResponseEntity<UserDTO> getUserByUsername(@PathVariable String username) {
+        UserDTO user = null;
+        try {
+            user = userService.findUserByUsername(username);
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        } catch (ResourceNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping()
     public ResponseEntity<String> insertUser(@RequestBody UserDTO userDTO) {
         String username = userService.insertUser(userDTO);
@@ -37,9 +48,9 @@ public class UserController {
     public ResponseEntity<String> deleteUser(@PathVariable String username) {
         try {
             userService.deleteUser(username);
-            return new ResponseEntity<String>(username, HttpStatus.OK);
+            return new ResponseEntity<>(username, HttpStatus.OK);
         } catch (ResourceNotFoundException e) {
-            return new ResponseEntity<String>(e.getMessage(), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 

@@ -32,6 +32,14 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    public UserDTO findUserByUsername(String username) {
+        Optional<User> user = userRepository.findById(username);
+        if (!user.isPresent()) {
+            throw new ResourceNotFoundException("User " + username + " not found.");
+        }
+        return UserBuilder.toUserDTO(user.get());
+    }
+
     public String insertUser(UserDTO userDTO) {
         User user = UserBuilder.toUser(userDTO);
         user = userRepository.save(user);
