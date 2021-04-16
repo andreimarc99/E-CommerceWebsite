@@ -29,6 +29,16 @@ public class FavoriteProductsController {
         return new ResponseEntity<>(favoriteProductsDTOS, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{username}")
+    public ResponseEntity<FavoriteProductsDTO> findFavoriteProductsByUsername(@PathVariable String username) {
+        try {
+            FavoriteProductsDTO favoriteProductsDTO = favoriteProductsService.getFavoriteProductsByUsername(username);
+            return new ResponseEntity<>(favoriteProductsDTO, HttpStatus.OK);
+        } catch (ResourceNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping()
     public ResponseEntity<Long> insertFavoriteProducts(@RequestBody FavoriteProductsDTO favoriteProductsDTO) {
         Long insertedFavoriteProductsId;

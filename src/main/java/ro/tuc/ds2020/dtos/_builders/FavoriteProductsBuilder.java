@@ -29,7 +29,7 @@ public class FavoriteProductsBuilder {
     public static FavoriteProductsDTO toFavoriteProductsDTO(FavoriteProducts favoriteProducts) {
         return new FavoriteProductsDTO(favoriteProducts.getFavoriteProductsId(),
                 CustomerBuilder.toCustomerDTO(favoriteProducts.getCustomer()),
-                favoriteProducts.getProducts().stream().map(ProductBuilder::toProductDTO).collect(Collectors.toList()));
+                favoriteProducts.getProducts().stream().map(ProductBuilder::toProductWithImageDTO).collect(Collectors.toList()));
     }
 
     public static ShortFavoriteProductsDTO toShortFavoriteProductsDTO(FavoriteProducts favoriteProducts) {

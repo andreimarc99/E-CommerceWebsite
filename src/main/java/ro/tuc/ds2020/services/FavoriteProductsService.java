@@ -30,6 +30,14 @@ public class FavoriteProductsService {
                 .collect(Collectors.toList());
     }
 
+    public FavoriteProductsDTO getFavoriteProductsByUsername(String username) {
+        Optional<FavoriteProducts> favoriteProducts = favoriteProductsRepository.getFavoriteProductsByUsername(username);
+        if (!favoriteProducts.isPresent()) {
+            throw new ResourceNotFoundException("FavoriteProducts for " + username + " not found.");
+        }
+        return FavoriteProductsBuilder.toFavoriteProductsDTO(favoriteProducts.get());
+    }
+
     public Long insertFavoriteProducts(FavoriteProductsDTO favoriteProductsDTO) {
         FavoriteProducts favoriteProducts = FavoriteProductsBuilder.toFavoriteProducts(favoriteProductsDTO);
         return FavoriteProductsBuilder.toFavoriteProductsDTO(favoriteProductsRepository.save(favoriteProducts)).getFavoriteProductsId();

@@ -2,17 +2,18 @@ package ro.tuc.ds2020.dtos.cartDTOs;
 
 import ro.tuc.ds2020.dtos.customerDTOs.CustomerDTO;
 import ro.tuc.ds2020.dtos.productDTOs.ProductDTO;
+import ro.tuc.ds2020.dtos.productDTOs.ProductWithImageDTO;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class CartDTO {
     private Long cartId;
-    private List<ProductDTO> products = new ArrayList<>();
+    private List<ProductWithImageDTO> products = new ArrayList<>();
     private CustomerDTO customer;
     private Float fullPrice;
 
-    public CartDTO(Long cartId, List<ProductDTO> products, CustomerDTO customer, Float fullPrice) {
+    public CartDTO(Long cartId, List<ProductWithImageDTO> products, CustomerDTO customer, Float fullPrice) {
         this.cartId = cartId;
         this.products = products;
         this.customer = customer;
@@ -27,11 +28,11 @@ public class CartDTO {
         this.cartId = cartId;
     }
 
-    public List<ProductDTO> getProducts() {
+    public List<ProductWithImageDTO> getProducts() {
         return products;
     }
 
-    public void setProducts(List<ProductDTO> products) {
+    public void setProducts(List<ProductWithImageDTO> products) {
         this.products = products;
     }
 

@@ -16,7 +16,7 @@ public class CartBuilder {
 
     public static CartDTO toCartDTO(Cart cart) {
         return new CartDTO(cart.getCartId(),
-                cart.getProducts().stream().map(ProductBuilder::toProductDTO).collect(Collectors.toList()),
+                cart.getProducts().stream().map(ProductBuilder::toProductWithImageDTO).collect(Collectors.toList()),
                 CustomerBuilder.toCustomerDTO(cart.getCustomer()),
                 cart.getFullPrice());
     }
