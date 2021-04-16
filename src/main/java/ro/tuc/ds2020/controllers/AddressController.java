@@ -27,6 +27,16 @@ public class AddressController {
         return new ResponseEntity<>(addressDTOS, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{username}")
+    public ResponseEntity<List<AddressDTO>> findAddressesByUsername(@PathVariable String username) {
+        try {
+            List<AddressDTO> addressDTOS = addressService.getAddressesByUsername(username);
+            return new ResponseEntity<>(addressDTOS, HttpStatus.OK);
+        } catch (ResourceNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping()
     public ResponseEntity<Long> insertAddress(@RequestBody AddressDTO addressDTO) {
         Long insertedAddressId;

@@ -31,6 +31,14 @@ public class CategoryService {
                 .collect(Collectors.toList());
     }
 
+    public CategoryDTO findCategoryByName(String name) {
+        Optional<Category> category = categoryRepository.getCategoryByName(name);
+        if (!category.isPresent()) {
+            throw new ResourceNotFoundException("Category with name " + name + " not found.");
+        }
+        return CategoryBuilder.toCategoryDTO(category.get());
+    }
+
     public Long insertCategory(CategoryDTO categoryDTO) {
         Category category = CategoryBuilder.toCategory(categoryDTO);
         category = categoryRepository.save(category);

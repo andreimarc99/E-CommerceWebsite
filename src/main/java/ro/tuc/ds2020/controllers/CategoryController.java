@@ -27,6 +27,17 @@ public class CategoryController {
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{name}")
+    public ResponseEntity<CategoryDTO> getCategoryByName(@PathVariable String name) {
+        try {
+            CategoryDTO categoryDTO = categoryService.findCategoryByName(name);
+            return new ResponseEntity<>(categoryDTO, HttpStatus.OK);
+        } catch (ResourceNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }
+
     @PostMapping()
     public ResponseEntity<Long> insertCategory(@RequestBody CategoryDTO categoryDTO) {
         Long categoryId = categoryService.insertCategory(categoryDTO);

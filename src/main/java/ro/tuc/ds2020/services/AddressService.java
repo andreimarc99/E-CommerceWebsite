@@ -35,6 +35,13 @@ public class AddressService {
                 .collect(Collectors.toList());
     }
 
+    public List<AddressDTO> getAddressesByUsername(String username) {
+        List<Address> addresses = addressRepository.getAddressesByUsername(username);
+        return addresses.stream()
+                .map(AddressBuilder::toAddressDTO)
+                .collect(Collectors.toList());
+    }
+
     public Long insertAddress(AddressDTO addressDTO) {
         Address address = AddressBuilder.toAddress(addressDTO);
         address = addressRepository.save(address);
