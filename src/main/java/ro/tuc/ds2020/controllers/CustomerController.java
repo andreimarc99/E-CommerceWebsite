@@ -29,6 +29,16 @@ public class CustomerController {
         return new ResponseEntity<>(customerDTOS, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{username}")
+    public ResponseEntity<CustomerDTO> findCustomerByUsername(@PathVariable String username) {
+        try {
+            CustomerDTO customerDTO = customerService.findCustomerByUsername(username);
+            return new ResponseEntity<>(customerDTO, HttpStatus.OK);
+        } catch (ResourceNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping()
     public ResponseEntity<Long> insertCustomer(@RequestBody CustomerToBeInsertedDTO customerToBeInsertedDTO) {
         Long insertedCustomerId;

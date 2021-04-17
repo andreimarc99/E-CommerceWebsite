@@ -36,6 +36,14 @@ public class CustomerService {
                 .collect(Collectors.toList());
     }
 
+    public CustomerDTO findCustomerByUsername(String username) {
+        Optional<Customer> customer = customerRepository.getCustomerByUsername(username);
+        if (!customer.isPresent()) {
+            throw new ResourceNotFoundException("Customer with username " + username + " not found.");
+        }
+        return CustomerBuilder.toCustomerDTO(customer.get());
+    }
+
     public Long insertCustomer(CustomerToBeInsertedDTO customerToBeInsertedDTO) {
         Customer customer = CustomerBuilder.toCustomer(customerToBeInsertedDTO);
         customer = customerRepository.save(customer);

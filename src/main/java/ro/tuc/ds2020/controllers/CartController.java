@@ -28,6 +28,16 @@ public class CartController {
         return new ResponseEntity<>(cartDTOS, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{username}")
+    public ResponseEntity<CartDTO> findCartByUsername(@PathVariable String username) {
+        try {
+            CartDTO cartDTO = cartService.getCartByUsername(username);
+            return new ResponseEntity<>(cartDTO, HttpStatus.CREATED);
+        } catch (ResourceNotFoundException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping()
     public ResponseEntity<Long> insertCart(@RequestBody CartDTO cartDTO) {
         Long insertedCartId;

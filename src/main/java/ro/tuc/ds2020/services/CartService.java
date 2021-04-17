@@ -31,6 +31,14 @@ public class CartService {
                 .collect(Collectors.toList());
     }
 
+    public CartDTO getCartByUsername(String username) {
+        Optional<Cart> cart = cartRepository.getCartByUsername(username);
+        if (!cart.isPresent()) {
+            throw new ResourceNotFoundException("Cart from customer " + username + " not found.");
+        }
+        return CartBuilder.toCartDTO(cart.get());
+    }
+
     public Long insertCart(CartDTO cartDTO) {
         Cart cart = CartBuilder.toCart(cartDTO);
         cart = cartRepository.save(cart);
