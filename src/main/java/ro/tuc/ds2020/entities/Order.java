@@ -14,8 +14,8 @@ public class Order {
     @JoinColumn(name = "cartId")
     private Cart cart;
 
-    @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "voucherId")
+    @OneToOne(optional = true)
+    @JoinColumn(name = "voucherId", nullable = true)
     private Voucher voucher;
 
     @Column(name = "delivered", nullable = false)
@@ -24,14 +24,19 @@ public class Order {
     @Column(name = "finalPrice", nullable = false)
     private Float finalPrice;
 
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @JoinColumn(name = "addressId")
+    private Address address;
+
     public Order() {}
 
-    public Order(Long orderId, Cart cart, Voucher voucher, boolean delivered, Float finalPrice) {
+    public Order(Long orderId, Cart cart, Voucher voucher, boolean delivered, Float finalPrice, Address address) {
         this.orderId = orderId;
         this.cart = cart;
         this.voucher = voucher;
         this.delivered = delivered;
         this.finalPrice = finalPrice;
+        this.address = address;
     }
 
     public Long getOrderId() {
@@ -72,5 +77,13 @@ public class Order {
 
     public void setFinalPrice(Float finalPrice) {
         this.finalPrice = finalPrice;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

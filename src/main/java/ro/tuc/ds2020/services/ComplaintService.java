@@ -31,6 +31,13 @@ public class ComplaintService {
                 .collect(Collectors.toList());
     }
 
+    public List<ComplaintDTO> findComplaintsByUsername(String username) {
+        List<Complaint> complaints = complaintRepository.getComplaintsByUsername(username);
+        return complaints.stream()
+                .map(ComplaintBuilder::toComplaintDTO)
+                .collect(Collectors.toList());
+    }
+
     public Long insertComplaint(ComplaintDTO complaintDTO) {
         Complaint complaint = ComplaintBuilder.toComplaint(complaintDTO);
         complaint = complaintRepository.save(complaint);

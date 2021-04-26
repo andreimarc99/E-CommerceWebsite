@@ -10,7 +10,8 @@ public class OrderBuilder {
                 CartBuilder.toCart(orderDTO.getCart()),
                 VoucherBuilder.toVoucher(orderDTO.getVoucher()),
                 orderDTO.isDelivered(),
-                orderDTO.getFinalPrice());
+                orderDTO.getFinalPrice(),
+                AddressBuilder.toAddress(orderDTO.getAddress()));
     }
 
     public static OrderDTO toOrderDTO(Order order) {
@@ -18,6 +19,7 @@ public class OrderBuilder {
                 CartBuilder.toCartDTO(order.getCart()),
                 VoucherBuilder.toVoucherDTO(order.getVoucher()),
                 order.isDelivered(),
-                order.getFinalPrice());
+                order.getFinalPrice(),
+                AddressBuilder.toAddressDTO(order.getAddress()));
     }
 }

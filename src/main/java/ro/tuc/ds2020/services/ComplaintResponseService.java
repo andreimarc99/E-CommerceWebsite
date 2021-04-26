@@ -32,6 +32,14 @@ public class ComplaintResponseService {
                 .collect(Collectors.toList());
     }
 
+    public ComplaintResponseDTO findComplaintResponsesByComplaintId(Long complaintId) {
+        Optional<ComplaintResponse> complaintResponse = complaintResponseRepository.findComplaintResponseByComplaintId(complaintId);
+        if (!complaintResponse.isPresent()) {
+            throw new ResourceNotFoundException("ComplaintResponse for Complaint with ID " + complaintId + " not found.");
+        }
+        return ComplaintResponseBuilder.toComplaintResponseDTO(complaintResponse.get());
+    }
+
     public Long insertComplaintResponse(ComplaintResponseDTO complaintResponseDTO) {
         ComplaintResponse complaintResponse = ComplaintResponseBuilder.toComplaintResponse(complaintResponseDTO);
         complaintResponse = complaintResponseRepository.save(complaintResponse);

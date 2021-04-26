@@ -9,13 +9,17 @@ public class VoucherBuilder {
         return new Voucher(voucherDTO.getVoucherId(),
                 voucherDTO.getStartDate(),
                 voucherDTO.getEndDate(),
-                voucherDTO.isOneTimeOnly());
+                voucherDTO.isOneTimeOnly(),
+                voucherDTO.getCode(),
+                voucherDTO.getDiscount());
     }
 
     public static VoucherDTO toVoucherDTO(Voucher voucher) {
         return new VoucherDTO(voucher.getVoucherId(),
                 voucher.getStartDate(),
                 voucher.getEndDate(),
-                voucher.isOneTimeOnly());
+                voucher.isOneTimeOnly(),
+                voucher.getCode(),
+                voucher.getDiscount());
     }
 }

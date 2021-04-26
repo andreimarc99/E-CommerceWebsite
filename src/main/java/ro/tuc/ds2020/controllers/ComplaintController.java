@@ -28,6 +28,16 @@ public class ComplaintController {
         return new ResponseEntity<>(complaintDTOS, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/{username}")
+    public ResponseEntity<List<ComplaintDTO>> findComplaintsByUsername(@PathVariable String username) {
+        try {
+            List<ComplaintDTO> complaintDTOS = complaintService.findComplaintsByUsername(username);
+            return new ResponseEntity<>(complaintDTOS, HttpStatus.OK);
+        } catch (ResourceNotFoundException e) {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
     @PostMapping()
     public ResponseEntity<Long> insertComplaint(@RequestBody ComplaintDTO complaintDTO) {
         Long insertedComplaintId;

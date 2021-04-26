@@ -22,16 +22,24 @@ public class Voucher {
     @Column(name = "one_time_only", nullable = false)
     private boolean oneTimeOnly;
 
+    @Column(name = "code", nullable = false)
+    private String code;
+
+    @Column(name = "discount", nullable = false)
+    private Integer discount;
+
     @OneToMany(mappedBy = "voucher")
     private List<UsedVoucher> usedVoucherList = new ArrayList<>();
 
     public Voucher() {}
 
-    public Voucher(Long voucherId, Date startDate, Date endDate, boolean oneTimeOnly) {
+    public Voucher(Long voucherId, Date startDate, Date endDate, boolean oneTimeOnly, String code, Integer discount) {
         this.voucherId = voucherId;
         this.startDate = startDate;
         this.endDate = endDate;
         this.oneTimeOnly = oneTimeOnly;
+        this.code = code;
+        this.discount = discount;
     }
 
     public Long getVoucherId() {
@@ -72,5 +80,21 @@ public class Voucher {
 
     public void setUsedVoucherList(List<UsedVoucher> usedVoucherList) {
         this.usedVoucherList = usedVoucherList;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
     }
 }
